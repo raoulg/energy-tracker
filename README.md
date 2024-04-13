@@ -13,6 +13,7 @@ To start, copy the energy tracking script into the correct folder:
 sudo cp log-power-usage.sh /usr/local/bin/log-power-usage.sh
 ```
 
+### Cron
 Next, install the cron script which will run the energy tracker once per minute:
 
 ```bash
@@ -22,6 +23,21 @@ crontab cron-new
 rm cron-new
 ```
 
+### plist
+Alternatively, you can install the plist file which will run the energy tracker every 10 seconds.
+Copy the plist file to the LaunchAgents folder:
+
+```bash
+cp com.raoulg.log-power-usage.plist ~/Library/LaunchAgents/
+```
+
+Then load the plist file:
+
+```bash
+launchctl load ~/Library/LaunchAgents/com.raoulg.log-power-usage.plist
+```
+
+In settings > general > Login Items you should see the log-power-usage.sh script under 'allow in background'. This means the script is running.
 
 ## Viewing Usage Data
 
