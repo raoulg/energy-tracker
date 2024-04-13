@@ -33,7 +33,8 @@ then
 fi
 
 # Compute energy usage
-wattage=`$IOREG -rw0 -c AppleSmartBattery | grep BatteryData | grep -o '"AdapterPower"=[0-9]*' | cut -c 16- | xargs -I %  lldb --batch -o "print/f %" | grep -o '$0 = [0-9.]*' | cut -c 6-`
+# wattage=`$IOREG -rw0 -c AppleSmartBattery | grep BatteryData | grep -o '"AdapterPower"=[0-9]*' | cut -c 16- | xargs -I %  lldb --batch -o "print/f %" | grep -o '$0 = [0-9.]*' | cut -c 6-`
+wattage=`$IOREG -rw0 -c AppleSmartBattery | grep BatteryData | grep -o '"AdapterPower"=[0-9]*' | cut -c 16- | xargs -I %  lldb --batch -o "    print/f %" | tail -n 1 | awk '{print $2}'`
 wattHours=$(bc -l <<<"${wattage}/60")
 
 # Only proceed if the amount of wattage being used is > 0
