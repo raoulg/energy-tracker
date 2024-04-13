@@ -45,4 +45,5 @@ fi
 uuid=`$IOREG -d2 -c IOPlatformExpertDevice | awk -F\" '/IOPlatformUUID/{print $(NF-1)}'`
 timestamp=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
 
-echo "timestamp=$timestamp wattage=$wattage wattHours=$wattHours uuid=$uuid" >> "$TRACKER_DIR/$TRACKER_FILE"
+# echo "timestamp=$timestamp wattage=$wattage wattHours=$wattHours uuid=$uuid" >> "$TRACKER_DIR/$TRACKER_FILE"
+echo "$timestamp,$wattage,$wattHours,$uuid" >> "$TRACKER_DIR/$TRACKER_FILE"
