@@ -21,7 +21,10 @@ TRACKER_FILE=energy-log.txt
 IOREG=/usr/sbin/ioreg
 
 # PREREQUISITES
-mkdir -p ~/Library/Caches/energy-tracker
+if [[ ! -f "$TRACKER_DIR/$TRACKER_FILE" ]]; then
+  mkdir -p "$TRACKER_DIR"
+  echo "timestamp,wattage,wattHours,uuid" > "$TRACKER_DIR/$TRACKER_FILE"
+fi
 
 if ! command -v $IOREG &> /dev/null
 then
