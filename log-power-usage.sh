@@ -16,7 +16,7 @@
 # Created: 2022-01-19
 
 # GLOBALS
-TRACKER_DIR=~/Library/Caches/energy-tracker 
+TRACKER_DIR=~/.cache/energy-tracker
 TRACKER_FILE=energy-log.txt
 IOREG=/usr/sbin/ioreg
 
